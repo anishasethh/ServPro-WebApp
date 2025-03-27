@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="/static/ServPro.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title> Welcome, Admin! </title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+        <h1 class="case1 center" style="background-color:none; text-align:center;"> <img src="/static/logo.jpeg" alt="Logo" width="50" height="50" class="d-inline-block align-text-top"> ServPro </h1>
+          <div class="collapse navbar-collapse" id="admn">
+            <ul class="nav nav-underline">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/admin">Home</a>
+              </li> <b style="font-size: 25px; color:rgb(42, 54, 185)"> | </b>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin_summary">Analysis</a>
+              </li><b style="font-size: 25px; color:rgb(42, 54, 185)"> | </b>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Logout</a>
+              </li>
+            </ul>  
+          </div>
+          <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+              <form class="d-flex" role="search" method="POST" action="/search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                <button type="submit" class="btn btn-outline-primary">Search</button>
+              </form>
+            </div>
+          </nav>
+        </div>
+    </nav> 
+    <div class="table-responsive"><br>
+        <h3 style="color:rgb(0, 116, 218); text-align: center; font-style: italic; font-weight: bold;">Customers</h3> 
+        {% if customer %}   
+            <table class= "table table-bordered table-sm" style="background-color:rgb(175, 183, 204); text-align: center;">
+                <thead>
+                    <tr>
+                        <th scope="col"> ID</th>
+                        <th scope="col" colspan="2"> Full Name </th>
+                        <th scope="col"> Contact Number </th>
+                        <th scope="col"> Address</th>
+                        <th scope="col"> Pincode</th>
+                        <th scope="col"> Date of Joining</th>
+                        <th scope="col"> Average Customer Rating</th>
+                        <th scope="col"> Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cust in customer %}
+                    <tr>
+                    <td> {{cust.cust_id}}</td>
+                    <td colspan="2"> {{cust.fname}} {{cust.lname}} </td>
+                    <td> {{cust.phone}} </td>
+                    <td> {{cust.address}}</td>
+                    <td> {{cust.pincode}}</td>
+                    <td> {{cust.jdate}}</td>                 
+                    <td> {{cust.avg_cust_rating}}</td>                    
+                    <td> <a href="/delete_customer/{{cust.cust_id}}" type="button" class="btn btn-primary">Delete</a></td>                    
+                </tr>
+              {% endfor %}  
+            </tbody>
+        </table>
+        {% else %} <h3 style="color:rgb(42, 54, 185); text-align: center; font-style: italic; font-weight: bold;"> No Customers Available! </h3> 
+        {% endif %}  
+        </div> <br> <hr>    
+</body>
+</html>

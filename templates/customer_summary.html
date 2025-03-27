@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="/static/ServPro.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title> Welcome, {{username}}! </title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+        <h1 class="case1 center" style="background-color:none; text-align:center;"> <img src="/static/logo.jpeg" alt="Logo" width="50" height="50" class="d-inline-block align-text-top"> ServPro </h1>
+          <div class="collapse navbar-collapse" id="admn">
+            <ul class="nav nav-underline">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/customer/{{username}}">Home</a>
+              </li> <b style="font-size: 25px; color:rgb(42, 54, 185)"> | </b>
+              <li class="nav-item">
+                <a class="nav-link" href="/customer_summary/{{username}}">Analysis</a>
+              </li><b style="font-size: 25px; color:rgb(42, 54, 185)"> | </b>
+              <li class="nav-item">
+                <a class="nav-link" href="/customer_profile/{{cust_id}}/{{username}}"> Profile </a>
+              </li><b style="font-size: 25px; color:rgb(42, 54, 185)"> | </b>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Logout</a>
+              </li>
+            </ul>  
+          </div>
+          <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+              <form class="d-flex" role="search" method="POST" action="/customer_search/{{username}}">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" >
+                <button type="submit" class="btn btn-outline-primary">Search</button>
+              </form>
+            </div>
+          </nav>
+        </div>
+    </nav><br>
+    <div class="container">
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title text-center" style="font-size:35px; color:rgb(42, 54, 185);"><b><u> Service History</u>-Analysis</b></h5>
+                <img src="{{ url_for('static', filename='customer/' + username + 'customer_summary.jpeg') }}" class="d-block mx-auto" width="500p" height="400">
+                </div>
+            </div>
+    </div>

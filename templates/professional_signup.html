@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="/static/ServPro.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title> PROFESSIONAL SIGNUP </title>
+</head>
+<body>
+    <h1 class="case1"> <img src="/static/logo.jpeg" alt="Logo" width="50" height="50" class="d-inline-block align-text-top"> ServPro </h1>
+    <h3 style="text-align: center"> <bold> SERVICE EXPERT REGISTRATION </bold></h3>    
+    <div class="case2">  
+      <form action="/professional_signup" method="POST" enctype="multipart/form-data">     
+        <div class="row g-3">
+            <div class="col">
+              <label for="fname" class="form-label">First Name</label>
+              <input type="text"  name="fname" class="form-control" id="fname" placeholder="First Name" required>
+            </div>
+            <div class="col">
+              <label for="lname" class="form-label">Last Name</label>
+              <input type="text" name="lname" class="form-control" id="lname" placeholder="Last Name" required>
+            </div>
+        </div>    
+        <label for="servexp" class="form-label"> Service Expertise: (Select Any One) </label> <br>
+        <div class="col-lg-mb-3">
+        <select name="servexp" class="form-select form-select-lg mb-3"  form-select-line-weight="100%" required>
+            <option  selected disbaled> Select Available Services </option>
+              {% for service in services %}
+                <option value="{{service.servexp}}">{{service.servexp}}</option>
+                {% endfor %} 
+        </select>
+        </div>
+        <div class="mb-3">
+            <label for="exp" class="form-label">Experience (in years)</label>
+            <input type="number" id="exp" name="exp" class="form-control" placeholder="Enter your work experience" required>
+        </div>
+        <label for="docs" class="form-label"> Suitable Documents: (One combined pdf) </label>
+        <div class="input-group mb-3"> 
+            <input type="file" class="form-control" name="docs" id="docs">
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Contact Number</label>
+            <input type="number" id="phone" name="phone" class="form-control" placeholder="XXXXXXXXXX" required>
+        </div>  
+        <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <input type="text" id="address" name="address" class="form-control" placeholder="Enter your exact address" required>
+        </div>
+        <div class="mb-3">
+            <label for="pincode" class="form-label">Pincode</label>
+            <input type="number" id="pincode" name="pincode"  class="form-control" placeholder="XXXXXX" required>
+        </div>
+        <div class="mb-3">
+              <label for="username1" class="form-label">Username</label>
+              <input type="username" name="username" class="form-control" id="username1" placeholder="Enter a username" required>
+        </div>
+        <div class="mb-3">
+              <label for="password1" class="form-label">Password</label>
+              <input type="password" name="password" class="form-control" id="password1" placeholder="Create a strong password" required>
+        </div> 
+        <div class="form-check">
+            <input name="check" class="form-check-input" type="checkbox" id="gridCheck" required>
+            <label class="form-check-label" for="gridCheck">
+            I Aknowledge and Accept all the terms and conditions.
+            </label> 
+        </div> <br>
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit" style="width:100%;"><b> Create My Account </b></button>
+            <a href="/login" class="btn btn-primary" type="button" style="width:100%;"><b style="color: aliceblue;"> Cancel </b></a>
+        </div> 
+      </form>  
+      <div class="error">{{error_message}}</div>   
+    </div>
+</body>
+</html> 

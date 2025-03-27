@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="/static/ServPro.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title> Edit Service </title>
+</head>
+<body>
+    <h1 class="case1"> <img src="/static/logo.jpeg" alt="Logo" width="50" height="50" class="d-inline-block align-text-top"> ServPro </h1>
+    <h3 style="text-align: center"> <bold> Edit Service </bold></h3>    
+    <div class="case2">  
+      {% if service %}
+      <form action="/edit_service/{{service.serv_id}}" method="POST">  
+        <div class="col">
+            <label for="service" class="form-label">Service Name</label>
+            <input name="servexp" type="text" class="form-control" id="service" value="{{service.servexp}}" required>
+        </div>
+        <div class="col-lg">
+           <label for="description" class="form-label">Description</label>
+           <textarea name="description" type="text" class="form-control" id="description" rows="3" required>{{service.description}}</textarea>
+        </div> 
+        <div class="col">
+            <label for="base_price" class="form-label">Base Price (in Rs)</label>
+            <input type="number" required id="base_price" name="base_price"  class="form-control" value="{{service.base_price}}">
+        </div>
+        <div class="form-check">
+          <div class="col">
+            <input class="form-check-input" name="check" type="checkbox" id="gridCheck" required>
+            <label class="form-check-label" for="gridCheck">
+            I Agree to introduce changes into this <u>Service</u> to our users. 
+            </label> 
+          </div> 
+        </div> <br>
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit" style="width:100%;"><b>Edit Service </b></button>
+            <a href="/admin" class="btn btn-primary" type="button" style="width:100%;"><b style="color: aliceblue;"> Cancel </b></a>
+        </div>
+      </form> 
+    </div>
+    {% endif %}
+</body>
+</html>   

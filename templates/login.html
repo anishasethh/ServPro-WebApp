@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="/static/ServPro.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title> Login </title>
+</head>
+<body>
+    <h1 class="case1"> <img src="/static/logo.jpeg" alt="Logo" width="50" height="50" class="d-inline-block align-text-top"> ServPro </h1>
+    <h3 style="text-align: center"> <bold> LOGIN </bold></h3>    
+    <div class="case2" background-image:non> 
+      <form action="/login" method="POST">
+        <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="username" name="username" class="form-control" id="username" placeholder="xxxxxx@yyyyy.com" required>
+        
+                <label for="password" class="form-label">Password</label>
+                <input type="password"  name="password" id="password" class="form-control" placeholder="Password" required>
+        </div>
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit" style="width:100%"><b> LOGIN</b></button>
+        </div>
+      <div class="form-check"> 
+          <input class="form-check-input" type="radio" name="login_name" id="1" value="1" required>
+          <label class="form-check-label" for="1" >Admin  </label> <br>
+          
+          <input class="form-check-input" type="radio" name="login_name" id="2" value="2" required>
+          <label class="form-check-label" for="2"> Service Professional
+          </label> &nbsp; <em><b>New User?</b></em> <a href="/professional_signup"> Register Now! </a> <br>
+          
+          <input class="form-check-input" type="radio" name="login_name" id="3" value="3" required>
+          <label class="form-check-label" for="3"> Customer
+          </label>  &nbsp; <em><b>New User?</b></em> <a href="/customer_signup"> Register Now! </a> <br>
+        </div>
+      </form> 
+      <div class="success">{{success_message}}</div>
+      <div class="error">{{error_message}}</div>     
+    </div>  
+
+
+</body>
+</html>
